@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:grona/consumer/models/CartModels.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CartPage extends StatefulWidget {
@@ -10,19 +11,11 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  CartPageModel cartModel = CartPageModel();
   @override
   void initState() {
     print(widget.data.documentID);
     super.initState();
-  }
-
-  _launchCaller() async {
-    var url = "tel:" + widget.data.documentID.toString();
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   @override
@@ -32,18 +25,19 @@ class _CartPageState extends State<CartPage> {
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.phone, color: Colors.white),
-              onPressed: _launchCaller)
+              onPressed: cartModel.launchCaller(widget.data.documentID))
         ],
       ),
       body: Column(
         children: <Widget>[
           Expanded(child: Text("dataa")),
-          Container(height: 100, child: Row(
-            children: <Widget>[
-              
-              RaisedButton(onPressed: null),
-            ],
-          ))
+          Container(
+              height: 100,
+              child: Row(
+                children: <Widget>[
+                  RaisedButton(onPressed: null),
+                ],
+              ))
         ],
       ),
     );

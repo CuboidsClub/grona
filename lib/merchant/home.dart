@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grona/common/services/Authentication.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -64,6 +65,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           children: <Widget>[Text("data"), Text("data2"), Text("data3")],
           controller: tabController,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Text('Signout'),
+        onPressed: (){
+          Authentication().signOut();
+        },
       ),
     );
   }

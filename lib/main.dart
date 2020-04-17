@@ -1,45 +1,28 @@
 import 'package:flutter/material.dart';
-import 'consumer/home.dart';
-import 'merchant/home.dart';
+import 'package:grona/common/Ui/StartUpView.dart';
+import 'package:grona/common/Ui/dialogManagar.dart';
+import 'package:grona/common/services/Navigation.dart';
+import 'package:grona/locator.dart';
+import 'package:grona/router.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Grona',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Grona Home'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Text("Welcome to Grona"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ConsumerHome())),
-        tooltip: 'Increment',
-        child: Icon(Icons.navigate_next),
-      ),
-    );
+        theme: ThemeData.light(),
+        title: 'Grona',
+        builder: (context, widget) => Navigator(
+            onGenerateRoute: (settings) => MaterialPageRoute(
+                builder: (context) => ShowDialogManager(
+                      child: widget,
+                    ))),
+        navigatorKey: locator<Navigation>().navigationKey,
+        onGenerateRoute: generateRoute,
+        home: StartUpView());
   }
 }

@@ -1,6 +1,8 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:grona/consumer/models/AccountModels.dart';
 import 'package:shape_of_view/shape_of_view.dart';
+import '../components/AccountWidgets.dart';
 
 class ConsumerAccount extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class ConsumerAccount extends StatefulWidget {
 }
 
 class _ConsumerAccountState extends State<ConsumerAccount> {
+  AccountModels acctModel = AccountModels();
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -55,68 +58,20 @@ class _ConsumerAccountState extends State<ConsumerAccount> {
           height: 400,
           child: Column(
             children: <Widget>[
-              myAccWidget(Icons.perm_identity, "Test user Name"),
+              MyAccWidget(Icons.perm_identity, acctModel.name),
               Divider(),
-              myAccWidget(Icons.phone, "+91 9515792944"),
+              MyAccWidget(Icons.phone, acctModel.mobile),
               Divider(),
-              myAccWidget(Icons.alternate_email, "--"),
+              MyAccWidget(Icons.alternate_email, acctModel.email),
               Divider(),
-              myAccWidget(Icons.location_city, "Nandyal"),
+              MyAccWidget(Icons.location_city, "Nandyal"),
               Divider(),
-              myAccWidget(Icons.pin_drop, "518501")
+              MyAccWidget(Icons.pin_drop, acctModel.pin)
             ],
           ),
         ),
-        Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-          height: 60,
-          margin: EdgeInsets.only(
-            top: 15,
-            bottom: 15,
-              left: MediaQuery.of(context).size.width / 4,
-              right: MediaQuery.of(context).size.width / 4),
-          child: RaisedButton(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3),
-            ),
-            onPressed: () => print("object"),
-            color: Colors.blue,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.exit_to_app,
-                  color: Colors.white,
-                  size: 28,
-                ),
-                Text(
-                  "   Logout",
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                )
-              ],
-            ),
-          ),
-        )
+        AccountRaisedBtn()
       ],
     );
   }
-}
-
-myAccWidget(icon, txt) {
-  return Container(
-    margin: EdgeInsets.only(left: 20, top: 15, bottom: 6),
-    child: Row(
-      children: <Widget>[
-        Icon(
-          icon,
-          color: Colors.blue,
-        ),
-        Text(
-          "   " + txt,
-          style: TextStyle(fontSize: 22, color: Colors.blue),
-        )
-      ],
-    ),
-  );
 }
