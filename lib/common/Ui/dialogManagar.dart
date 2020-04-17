@@ -32,7 +32,7 @@ class _ShowDialogManagerState extends State<ShowDialogManager> {
         desc: request.description,
         buttons: [
           DialogButton(
-            child: Text(request.buttonTitle),
+            child: Text(request.buttonTitle,style: TextStyle(color: Colors.white),),
             onPressed: (){
               Navigator.pop(context);
               showDialog.showDialogCompleter(AlertResponse(confirmed: true));

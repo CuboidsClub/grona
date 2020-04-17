@@ -153,6 +153,7 @@ class _EnterDetailsState extends State<EnterDetails> {
                                       child: Padding(
                                         padding: const EdgeInsets.only(right: 10),
                                         child: TextFormField(
+                                          validator: (value)=>value.isEmpty?'Phone number cannot be empty':null,
                                           textAlign: TextAlign.center,
                                           controller: countryId,
                                           decoration: InputDecoration(
@@ -166,6 +167,7 @@ class _EnterDetailsState extends State<EnterDetails> {
                                       child: TextFormField(
                                         maxLength: 10,
                                         controller: phoneNum,
+                                        validator: (value)=>value.isEmpty?'Enter the phone number':null,
                                         decoration: InputDecoration(
                                             hintText: 'phone number'
                                         ),
@@ -187,10 +189,12 @@ class _EnterDetailsState extends State<EnterDetails> {
                         height: SizeConfig.blockSizeVertical*5,
                         color: Colors.blue,
                         onPressed: ()async{
-                          number=countryId.text+phoneNum.text;
-                          var response =  await _showDialog.showDialog(title: 'Grona',description: 'Check your phone number is correct before clicking Confirm $number');
-                          if(response.confirmed){
-                            model.createUserWithPhone(number=countryId.text+phoneNum.text);
+                          if(key.currentState.validate()){
+                            number=countryId.text+phoneNum.text;
+                            var response =  await _showDialog.showDialog(title: 'Grona',description: 'Check your phone number is correct before clicking Confirm $number',buttonTitle: 'Confirm');
+                            if(response.confirmed){
+                              model.createUserWithPhone(number=countryId.text+phoneNum.text);
+                            }
                           }
                           },
                         child: Text('Next',style: TextStyle(color: Colors.white),),

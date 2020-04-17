@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grona/common/services/Authentication.dart';
 import 'package:grona/common/services/BaseWidget.dart';
 import 'package:grona/common/services/Navigation.dart';
+import 'package:grona/common/services/dialog.dart';
 import 'package:grona/constant.dart';
 import 'package:grona/locator.dart';
 
@@ -10,6 +11,7 @@ class LoginPageViewModel extends BaseWidget {
   bool codeSent = false;
   Authentication _auth = locator<Authentication>();
   Navigation _navigation = locator<Navigation>();
+  ShowDialog _showDialog = locator<ShowDialog>();
 
   Future<void> createUserWithPhone(phone)async{
 
@@ -18,7 +20,7 @@ class LoginPageViewModel extends BaseWidget {
     };
 
     final PhoneVerificationFailed verificationFailed = (AuthException exception){
-      print('${exception.message}');
+      _showDialog.showDialog(title: 'Opertion failed',description: exception.message,buttonTitle: 'OK');
     };
 
     final PhoneCodeSent codeSend = (String verId,[int forceResend]){
