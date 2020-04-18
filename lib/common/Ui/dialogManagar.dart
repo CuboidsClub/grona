@@ -12,7 +12,6 @@ class ShowDialogManager extends StatefulWidget {
 }
 
 class _ShowDialogManagerState extends State<ShowDialogManager> {
-
   ShowDialog showDialog = locator<ShowDialog>();
 
   @override
@@ -26,21 +25,22 @@ class _ShowDialogManagerState extends State<ShowDialogManager> {
     return widget.child;
   }
 
-  void _showDialog(AlertRequest request){
+  void _showDialog(AlertRequest request) {
     Alert(context: context,
-        title: request.title,
-        desc: request.description,
-        buttons: [
-          DialogButton(
-            child: Text(request.buttonTitle,style: TextStyle(color: Colors.white),),
-            onPressed: (){
-              Navigator.pop(context);
-              showDialog.showDialogCompleter(AlertResponse(confirmed: true));
-            },
-          )
-        ],
-        closeFunction: ()=>showDialog.showDialogCompleter(AlertResponse(confirmed: false)),
+      title: request.title,
+      desc: request.description,
+      buttons: [
+        DialogButton(
+          child: Text(
+            request.buttonTitle, style: TextStyle(color: Colors.white),),
+          onPressed: () {
+            Navigator.pop(context);
+            showDialog.showDialogCompleter(AlertResponse(confirmed: true));
+          },
+        )
+      ],
+      closeFunction: () =>
+          showDialog.showDialogCompleter(AlertResponse(confirmed: false)),
     ).show();
   }
-
 }

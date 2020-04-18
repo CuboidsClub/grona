@@ -5,8 +5,8 @@ import 'package:grona/common/services/dialog.dart';
 
 GetIt locator = GetIt.instance;
 
-void setupLocator(){
-locator.registerLazySingleton(()=>Navigation());
-locator.registerLazySingleton(()=>Authentication());
-locator.registerLazySingleton(()=>ShowDialog());
+void setupLocator() {
+  locator.registerLazySingleton(() => Navigation());
+  locator.registerLazySingleton(() => Authentication());
+  locator.registerLazySingleton(() => ShowDialog());
 }

@@ -4,6 +4,8 @@ import 'package:grona/common/Ui/LoginPage.dart';
 import 'package:grona/constant.dart';
 import 'package:grona/merchant/home.dart';
 
+import 'common/Ui/Role.dart';
+
 Route<dynamic> generateRoute(RouteSettings settings){
 switch (settings.name){
   case LoginViewRoute:
@@ -23,6 +25,12 @@ switch (settings.name){
     return _getPageRoute(
       routeName: OtpViewRoute,
       viewToShow: Otp(information: information),
+    );
+
+  case RoleRoute:
+    return _getPageRoute(
+      routeName: RoleRoute,
+      viewToShow: Role(),
     );
 
   default:
