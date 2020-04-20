@@ -18,4 +18,8 @@ Future<dynamic> replaceNavigateTo(String routeName,{dynamic arguments}){
   return _navigationKey.currentState.pushReplacementNamed(routeName,arguments:arguments);
 }
 
+Future<dynamic> replaceAllNavigateTo(String routeName,{dynamic arguments}){
+  return _navigationKey.currentState.pushNamedAndRemoveUntil(routeName,(Route<dynamic> route)=>false);
+}
+
 }

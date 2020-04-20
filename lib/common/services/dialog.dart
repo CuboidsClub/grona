@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'package:grona/AlertRequest.dart';
-import 'package:grona/AlertResponse.dart';
+import 'package:grona/AlertRequest_Response.dart';
 
 class ShowDialog {
   Function(AlertRequest) _showDialogListener;

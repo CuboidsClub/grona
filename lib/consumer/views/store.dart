@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grona/consumer/components/StoresWidgets.dart';
 import 'package:grona/consumer/models/StoresModel.dart';
-import 'package:maps_launcher/maps_launcher.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'cartpage.dart';
 
 class Stores extends StatefulWidget {
   @override

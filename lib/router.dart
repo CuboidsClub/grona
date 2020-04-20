@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:grona/common/Ui/LoginPage.dart';
 import 'package:grona/constant.dart';
+import 'package:grona/consumer/home.dart';
 import 'package:grona/merchant/home.dart';
 
 import 'common/Ui/Role.dart';
@@ -33,6 +35,12 @@ switch (settings.name){
       viewToShow: Role(),
     );
 
+   case CustomerHomeRoute:
+     return _getPageRoute(
+       routeName: CustomerHomeRoute,
+       viewToShow: ConsumerHome()
+     );
+
   default:
     return MaterialPageRoute(
         builder: (_) => Scaffold(
@@ -43,7 +51,7 @@ switch (settings.name){
 }
 
 PageRoute _getPageRoute({String routeName,Widget viewToShow}){
-  return MaterialPageRoute(
+  return CupertinoPageRoute(
     settings: RouteSettings(name: routeName),
     builder: (_) => viewToShow
   );

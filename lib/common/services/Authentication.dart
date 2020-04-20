@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:grona/common/services/Navigation.dart';
 import 'package:grona/common/services/dialog.dart';
 import 'package:grona/constant.dart';
@@ -24,7 +23,7 @@ class Authentication {
       FirebaseUser _user = await _auth.currentUser();
       DocumentSnapshot documentReference = await Firestore.instance.collection('customer').document(_user.phoneNumber).get();
       if(documentReference.exists){
-        _navigation.replaceNavigateTo(HomeViewRoute);
+        _navigation.replaceNavigateTo(CustomerHomeRoute);
       }else{
         _navigation.replaceNavigateTo(RoleRoute);
       }
@@ -33,17 +32,6 @@ class Authentication {
     }
   }
 
-   //Sign-in with opt
-  Future signInWithOTP(smsCode, verId)async{
-    try{
-      AuthCredential authCredential = PhoneAuthProvider.getCredential(
-          verificationId: verId, smsCode: smsCode);
-      signInWithCredential(authCredential);
-    }catch(e){
-      _dialog.showDialog(title: 'Opertion Failed',description: e.message,buttonTitle: 'OK');
-    }
-
-  }
 
   //Sign-out
   Future signOut()async{

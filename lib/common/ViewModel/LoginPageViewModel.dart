@@ -14,18 +14,20 @@ class LoginPageViewModel extends BaseWidget {
   ShowDialog _showDialog = locator<ShowDialog>();
 
   Future<void> createUserWithPhone(phone)async{
-
+     setBusy(true);
     final PhoneVerificationCompleted verificationSuccess = (AuthCredential authResult){
       _auth.signInWithCredential(authResult);
     };
 
     final PhoneVerificationFailed verificationFailed = (AuthException exception){
+      setBusy(false);
       _showDialog.showDialog(title: 'Opertion failed',description: exception.message,buttonTitle: 'OK');
     };
 
     final PhoneCodeSent codeSend = (String verId,[int forceResend]){
       this.verificationId = verId;
       Map information = {'verid':verId,'phone':phone};
+      setBusy(false);
       _navigation.replaceNavigateTo(OtpViewRoute,arguments: information);
     };
 
@@ -41,5 +43,19 @@ class LoginPageViewModel extends BaseWidget {
         codeSent: codeSend,
         codeAutoRetrievalTimeout: codeRetrievalTimeout
     );
+  }
+
+  //Sign-in with opt
+  Future signInWithOTP(smsCode, verId)async{
+    setBusy(true);
+    try{
+      AuthCredential authCredential = PhoneAuthProvider.getCredential(
+          verificationId: verId, smsCode: smsCode);
+      await _auth.signInWithCredential(authCredential);
+      setBusy(false);
+    }catch(e){
+      _showDialog.showDialog(title: 'Opertion Failed',description: e.message,buttonTitle: 'OK');
+    }
+
   }
 }

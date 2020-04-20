@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grona/consumer/models/CartModels.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class CartPage extends StatefulWidget {
   DocumentSnapshot data;
   CartPage(this.data);
@@ -30,7 +30,7 @@ class _CartPageState extends State<CartPage> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(child: Text("dataa")),
+          Expanded(child: Text("data")),
           Container(
               height: 100,
               child: Row(

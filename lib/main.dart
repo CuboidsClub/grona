@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grona/common/Ui/StartUpView.dart';
 import 'package:grona/common/Ui/dialogManagar.dart';
-import 'package:grona/common/ViewModel/StartUpViewModel.dart';
 import 'package:grona/common/services/Navigation.dart';
-import 'package:grona/consumer/home.dart';
 import 'package:grona/locator.dart';
 import 'package:grona/router.dart';
 
-import 'common/Ui/Role.dart';
-import 'merchant/home.dart';
 
 void main() {
   setupLocator();

@@ -14,7 +14,7 @@ class StartUpViewModel extends BaseWidget {
       FirebaseUser _user = await FirebaseAuth.instance.currentUser();
       DocumentSnapshot documentReference = await Firestore.instance.collection('customer').document(_user.phoneNumber).get();
       if(documentReference.exists){
-        _navigation.replaceNavigateTo(HomeViewRoute);
+        _navigation.replaceNavigateTo(CustomerHomeRoute);
       }else{
         _navigation.replaceNavigateTo(RoleRoute);
       }

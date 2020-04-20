@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grona/consumer/views/cartpage.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
+// ignore: must_be_immutable
 class StoresList extends StatelessWidget {
   var snapshot;
   StoresList(this.snapshot);

@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grona/AlertRequest.dart';
-import 'package:grona/AlertResponse.dart';
+import 'package:grona/AlertRequest_Response.dart';
 import 'package:grona/common/services/dialog.dart';
 import 'package:grona/locator.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -28,6 +28,7 @@ class _ShowDialogManagerState extends State<ShowDialogManager> {
   void _showDialog(AlertRequest request) {
     Alert(context: context,
       title: request.title,
+      style: AlertStyle(animationType:AnimationType.fromTop,animationDuration: Duration(milliseconds: 400),titleStyle: TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w900,fontSize: 25)),
       desc: request.description,
       buttons: [
         DialogButton(

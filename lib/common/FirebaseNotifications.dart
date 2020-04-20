@@ -64,6 +64,7 @@ class FirebaseNotifications {
     );
   }
 
+  // ignore: non_constant_identifier_names
   void iOS_Permission() {
     _firebaseMessaging.requestNotificationPermissions(
         IosNotificationSettings(sound: true, badge: true, alert: true));
