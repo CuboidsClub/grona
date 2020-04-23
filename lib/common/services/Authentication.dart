@@ -22,9 +22,15 @@ class Authentication {
       await _auth.signInWithCredential(authCredential);
       FirebaseUser _user = await _auth.currentUser();
       DocumentSnapshot documentReference = await Firestore.instance.collection('customer').document(_user.phoneNumber).get();
-      if(documentReference.exists){
+      DocumentSnapshot documentReference2 = await Firestore.instance.collection('Testing-merchant').document(_user.phoneNumber).get();
+      if(documentReference.exists && documentReference2.exists){
+        _navigation.replaceNavigateTo(RoleNavigationRoute);
+      }else if(documentReference.exists){
         _navigation.replaceNavigateTo(CustomerHomeRoute);
-      }else{
+      }else if(documentReference2.exists){
+        _navigation.replaceNavigateTo(HomeViewRoute);
+      }
+      else{
         _navigation.replaceNavigateTo(RoleRoute);
       }
     }catch(e){

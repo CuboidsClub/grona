@@ -41,6 +41,12 @@ switch (settings.name){
        viewToShow: ConsumerHome()
      );
 
+  case RoleNavigationRoute:
+    return _getPageRoute(
+      routeName: RoleNavigationRoute,
+      viewToShow: RoleSelection()
+    );
+
   default:
     return MaterialPageRoute(
         builder: (_) => Scaffold(

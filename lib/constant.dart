@@ -4,3 +4,4 @@ const String HomeViewRoute = "HomeView";
 const String StartupViewRoute ="StartupView";
 const String RoleRoute = "RoleView";
 const String CustomerHomeRoute = "CustomerView";
+const String RoleNavigationRoute = "RoleNavigation";
