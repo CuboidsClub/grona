@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grona/common/Ui/size.dart';
 import 'package:grona/common/ViewModel/StartUpViewModel.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 
@@ -8,6 +9,7 @@ class StartUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return ViewModelProvider<StartUpViewModel>.withConsumer(
       viewModel: StartUpViewModel(),
       onModelReady: (model) => model.handleLogic(),

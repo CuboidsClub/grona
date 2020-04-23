@@ -347,6 +347,7 @@ class _MerchantState extends State<Merchant> {
   }
 }
 
+// ignore: must_be_immutable
 class RoleSelection extends StatelessWidget{
   Navigation _navigation = locator<Navigation>();
   @override
